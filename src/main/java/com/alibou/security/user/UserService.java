@@ -2,7 +2,7 @@ package com.alibou.security.user;
 
 import com.alibou.security.user.dto.ChangePasswordRequestDTO;
 import com.alibou.security.user.entity.User;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 import java.security.Principal;
 
 @Service
-@RequiredArgsConstructor
+
 public class UserService {
 
-    private final PasswordEncoder passwordEncoder;
-    private final UserRepository repository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+    @Autowired
+    UserRepository userRepository;
+
     public void changePassword(ChangePasswordRequestDTO request, Principal connectedUser) {
 
         var user = (User) ((UsernamePasswordAuthenticationToken) connectedUser).getPrincipal();
@@ -32,6 +36,6 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
 
         // save the new password
-        repository.save(user);
+        userRepository.save(user);
     }
 }
