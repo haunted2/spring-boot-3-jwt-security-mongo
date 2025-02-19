@@ -5,6 +5,7 @@ import com.alibou.security.book.BookService;
 import com.alibou.security.book.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/books")
+@PreAuthorize("hasRole('MANAGER')")
 public class BookApi {
 
     @Autowired
