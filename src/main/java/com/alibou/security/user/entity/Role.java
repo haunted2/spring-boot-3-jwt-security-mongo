@@ -1,4 +1,4 @@
-package com.alibou.security.user;
+package com.alibou.security.user.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.alibou.security.user.Permission.ADMIN_CREATE;
-import static com.alibou.security.user.Permission.ADMIN_DELETE;
-import static com.alibou.security.user.Permission.ADMIN_READ;
-import static com.alibou.security.user.Permission.ADMIN_UPDATE;
-import static com.alibou.security.user.Permission.MANAGER_CREATE;
-import static com.alibou.security.user.Permission.MANAGER_DELETE;
-import static com.alibou.security.user.Permission.MANAGER_READ;
-import static com.alibou.security.user.Permission.MANAGER_UPDATE;
+import static com.alibou.security.user.entity.Permission.ADMIN_CREATE;
+import static com.alibou.security.user.entity.Permission.ADMIN_DELETE;
+import static com.alibou.security.user.entity.Permission.ADMIN_READ;
+import static com.alibou.security.user.entity.Permission.ADMIN_UPDATE;
+import static com.alibou.security.user.entity.Permission.MANAGER_CREATE;
+import static com.alibou.security.user.entity.Permission.MANAGER_DELETE;
+import static com.alibou.security.user.entity.Permission.MANAGER_READ;
+import static com.alibou.security.user.entity.Permission.MANAGER_UPDATE;
 
 @RequiredArgsConstructor
 public enum Role {
@@ -41,7 +41,13 @@ public enum Role {
                   MANAGER_DELETE,
                   MANAGER_CREATE
           )
-  )
+  ),
+  PIPPO(  Set.of(
+          MANAGER_READ,
+          MANAGER_UPDATE,
+          MANAGER_DELETE,
+          MANAGER_CREATE
+  ))
 
   ;
 

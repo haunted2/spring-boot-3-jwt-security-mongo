@@ -1,6 +1,6 @@
 package com.alibou.security.auditing;
 
-import com.alibou.security.user.User;
+import com.alibou.security.user.entity.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +23,6 @@ public class ApplicationAuditAware implements AuditorAware<Integer> {
         }
 
         User userPrincipal = (User) authentication.getPrincipal();
-        return Optional.ofNullable(userPrincipal.getId());
+        return null;
     }
 }

@@ -1,6 +1,6 @@
-package com.alibou.security.auth;
+package com.alibou.security.auth.dto;
 
-import com.alibou.security.user.Role;
+import com.alibou.security.user.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+public class RegisterRequestDTO {
 
   private String firstname;
   private String lastname;
   private String email;
+  private String cf;
   private String password;
   private Role role;
 }

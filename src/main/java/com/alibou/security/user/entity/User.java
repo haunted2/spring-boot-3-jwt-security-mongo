@@ -1,44 +1,33 @@
-package com.alibou.security.user;
+package com.alibou.security.user.entity;
 
-import com.alibou.security.token.Token;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import java.util.Collection;
-import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "_user")
+@Document(collection = "USER")
 public class User implements UserDetails {
 
   @Id
-  @GeneratedValue
-  private Integer id;
+  private String id;
   private String firstname;
   private String lastname;
   private String email;
+  private String cf;
   private String password;
 
-  @Enumerated(EnumType.STRING)
   private Role role;
-
-  @OneToMany(mappedBy = "user")
-  private List<Token> tokens;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -52,7 +41,7 @@ public class User implements UserDetails {
 
   @Override
   public String getUsername() {
-    return email;
+    return cf;
   }
 
   @Override

@@ -1,26 +1,28 @@
 package com.alibou.security.book;
 
-import lombok.RequiredArgsConstructor;
+import com.alibou.security.book.dto.BookDTO;
+import com.alibou.security.book.entity.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class BookService {
 
-    private final BookRepository repository;
+    @Autowired
+    BookRepository bookRepository;
 
-    public void save(BookRequest request) {
+    public void save(BookDTO request) {
         var book = Book.builder()
                 .id(request.getId())
                 .author(request.getAuthor())
                 .isbn(request.getIsbn())
                 .build();
-        repository.save(book);
+        bookRepository.save(book);
     }
 
     public List<Book> findAll() {
-        return repository.findAll();
+        return bookRepository.findAll();
     }
 }
