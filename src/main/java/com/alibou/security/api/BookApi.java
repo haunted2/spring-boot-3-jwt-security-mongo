@@ -3,6 +3,7 @@ package com.alibou.security.api;
 import com.alibou.security.book.dto.BookDTO;
 import com.alibou.security.book.BookService;
 import com.alibou.security.book.entity.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequestMapping("/api/v1/books")
 public class BookApi {
 
+    @Autowired
     BookService bookService;
 
     @PostMapping

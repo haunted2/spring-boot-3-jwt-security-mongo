@@ -6,6 +6,7 @@ import com.alibou.security.auth.AuthenticationService;
 import com.alibou.security.auth.dto.RegisterRequestDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,28 +19,30 @@ import java.io.IOException;
 @RequestMapping("/api/v1/auth")
 public class AuthenticationApi {
 
- AuthenticationService authenticationService;
+    @Autowired
+    AuthenticationService authenticationService;
 
-  @PostMapping("/register")
-  public ResponseEntity<AuthenticationResponseDTO> register(
-      @RequestBody RegisterRequestDTO request
-  ) {
-    return ResponseEntity.ok(authenticationService.register(request));
-  }
-  @PostMapping("/authenticate")
-  public ResponseEntity<AuthenticationResponseDTO> authenticate(
-      @RequestBody AuthenticationRequestDTO request
-  ) {
-    return ResponseEntity.ok(authenticationService.authenticate(request));
-  }
+    @PostMapping("/register")
+    public ResponseEntity<AuthenticationResponseDTO> register(
+            @RequestBody RegisterRequestDTO request
+    ) {
+        return ResponseEntity.ok(authenticationService.register(request));
+    }
 
-  @PostMapping("/refresh-token")
-  public void refreshToken(
-      HttpServletRequest request,
-      HttpServletResponse response
-  ) throws IOException {
-    authenticationService.refreshToken(request, response);
-  }
+    @PostMapping("/authenticate")
+    public ResponseEntity<AuthenticationResponseDTO> authenticate(
+            @RequestBody AuthenticationRequestDTO request
+    ) {
+        return ResponseEntity.ok(authenticationService.authenticate(request));
+    }
+
+    @PostMapping("/refresh-token")
+    public void refreshToken(
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+        authenticationService.refreshToken(request, response);
+    }
 
 
 }
