@@ -2,6 +2,7 @@ package com.alibou.security.book;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +27,11 @@ public class BookController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Book>> findAllBooks() {
-        return ResponseEntity.ok(service.findAll());
+    public ResponseEntity<List<Book>> findAllBooks(@CurrentSecurityContext CurrentSecurityContext securityContext) {
+
+
+
+        return ResponseEntity.ok(service.findAll()
+        );
     }
 }

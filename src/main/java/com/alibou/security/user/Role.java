@@ -41,7 +41,13 @@ public enum Role {
                   MANAGER_DELETE,
                   MANAGER_CREATE
           )
-  )
+  ),
+  PIPPO(  Set.of(
+          MANAGER_READ,
+          MANAGER_UPDATE,
+          MANAGER_DELETE,
+          MANAGER_CREATE
+  ))
 
   ;
 
