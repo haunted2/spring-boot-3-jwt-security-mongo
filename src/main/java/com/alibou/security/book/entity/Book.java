@@ -1,4 +1,4 @@
-package com.alibou.security.book;
+package com.alibou.security.book.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

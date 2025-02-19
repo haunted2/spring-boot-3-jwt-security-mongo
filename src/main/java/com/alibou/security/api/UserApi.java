@@ -1,5 +1,7 @@
-package com.alibou.security.user;
+package com.alibou.security.api;
 
+import com.alibou.security.user.UserService;
+import com.alibou.security.user.dto.ChangePasswordRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -12,13 +14,13 @@ import java.security.Principal;
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
-public class UserController {
+public class UserApi {
 
     private final UserService service;
 
     @PatchMapping
     public ResponseEntity<?> changePassword(
-          @RequestBody ChangePasswordRequest request,
+          @RequestBody ChangePasswordRequestDTO request,
           Principal connectedUser
     ) {
         service.changePassword(request, connectedUser);

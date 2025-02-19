@@ -1,4 +1,4 @@
-package com.alibou.security.demo;
+package com.alibou.security.api;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/demo-controller")
 @Hidden
-public class DemoController {
+public class DemoApi {
 
   @GetMapping
   public ResponseEntity<String> sayHello() {
